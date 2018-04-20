@@ -1,0 +1,79 @@
+
+  .intro {
+    background-image: url("../img/capaalta.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    @include mediaQuerie(large) {
+      background-image: url("../img/capabaixa.jpg");
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+
+   .intro__title {
+     max-width: 75vw;
+     text-align: center;
+     margin-bottom: 1vh;
+   }
+   .intro__quote {
+     //padding-left: 2vw;
+     font-style: italic;
+   }
+   .intro__logo {
+margin-bottom: 20vh;
+@include mediaQuerie(large) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8vmax;
+  }
+  @include mediaQuerie(mid) {
+   margin-bottom: 12vmax;
+  }
+}
+   .intro__img{
+    max-width: 6vmax;
+    margin-right: 2vw;
+    @include mediaQuerie(large) {
+      margin-right: 0;
+      max-width: 8vw;
+    }
+    @include mediaQuerie(mid) {
+      max-width: 12vw;
+    }
+}
+.intro__name {
+    max-width: 18vmax;
+    @include mediaQuerie(large) {
+      max-width: 24vw;
+    }
+    @include mediaQuerie(mid) {
+      max-width: 36vw;
+    }
+}
+
+@keyframes scrollDown {
+  from {
+    bottom: 3vh;
+  }
+  to {
+    bottom: 2vh;
+  }
+}
+.cd-scroll-down {
+	position: absolute;
+	left: 50%;
+  right: auto;
+  bottom: 2vh;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+  height: 3vmax;
+  width: 2vmax;
+  background: url("../img/seta2.svg") no-repeat center center;
+  animation: scrollDown 1s ease-in 0s infinite alternate;
+  }

@@ -1,0 +1,30 @@
+////////////////////
+// Card
+////////////////////
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.card__item {
+  flex: 1;
+  padding-left: $padding2;
+	padding-right: $padding2;
+}
+.card__img {
+  max-width: 100%;
+}
+.card__title {
+  padding-top: $padding2;
+	padding-bottom: $padding1;
+}
+.card__text {
+  padding-bottom: $padding2;
+}
+%card__img--center {
+  display: block;
+  margin: 0 auto;
+}
+%card__item--center {
+  text-align: center;
+}

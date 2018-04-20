@@ -1,0 +1,193 @@
+////////////////////
+// Font
+////////////////////
+// Extend
+%fontType1 {
+  font-weight: normal;
+  font-family: $fontfamilyp;
+}
+
+%fontType2 {
+  font-weight: bold;
+  font-family: $fontfamilys;
+ // text-transform: uppercase;
+}
+// Flex Font
+:root {
+  font-size: #{$fontsizemin}px;
+}
+
+@media screen and (min-width: #{$mediasmall}px) and (max-width: #{$mediamid}px) {
+   :root {
+    font-size: calc(#{$fontsizemin}px + (#{$fontsizemax} - #{$fontsizemin}) * ( (100vw - #{$mediasmall}px) / ( #{$mediamid} - #{$mediasmall})));
+  }
+}
+
+@media screen and (min-width: #{$mediamid}px) {
+   :root {
+    font-size: #{$fontsizemax}px;
+  }
+}
+
+////////////////////
+// Heading Size
+////////////////////
+// Mixin
+@mixin headingSize($size) {
+  $baseline: 1rem;
+  $base-size: 0.5rem;
+  $step-size-heading: 0.33333;
+  $line-size-heading: 0.2222222;
+  $font-size: ($size * $step-size-heading) + $base-size;
+  $line-height: ($size * $line-size-heading) + $baseline;
+  $margin-bottom: $baseline - ($line-height % $baseline);
+  font-size: $font-size;
+  line-height: $line-height;
+  margin: $baseline 0 $margin-bottom 0;
+}
+// Generator
+// @for $i from 1 through 6 {
+//   h#{$i} {
+//     @include headingSize(7 - $i);
+//   }
+// }
+
+////////////////////
+// Media queries
+////////////////////
+@mixin mediaQuerie($size) {
+  @if $size==large {
+    @media screen and (max-width: #{$medialarge}px) {
+      @content;
+    }
+  }
+  @else if $size==mid {
+    @media screen and (max-width: #{$mediamid}px) {
+      @content;
+    }
+  }
+  @else if $size==small {
+    @media screen and (max-width: #{$mediasmall}px) {
+      @content;
+    }
+  }
+}
+
+////////////////////
+// Sections
+////////////////////
+// Container
+@mixin container ($containerwidth: $width, $margin: 0 auto) {
+  max-width: $containerwidth;
+  margin: $margin;
+}
+// Spaces
+@mixin gap ($gap: $padding2) {
+  padding-top: $gap;
+  padding-bottom: $gap;
+}
+
+@mixin wrapper ($wrapper: $padding1) {
+  margin-left: $wrapper;
+  margin-right: $wrapper;
+}
+// Hero
+@mixin heroColor ($bgcolor: $colorp1, $height: 100vh) {
+  background-color: $bgcolor;
+  height: $height;
+  position: relative;
+}
+@mixin heroImage ($bgimage: url("../img/heroImage.jpg"),
+$height: 100vh) {
+  background-image: $bgimage;
+  background-size: cover;
+  height: $height;
+  position: relative;
+}
+@mixin heroContent {
+  position: absolute;
+}
+
+////////////////////
+// Button
+////////////////////
+@mixin button ($bgcolor: $colorp1,
+$hovercolor: $colors1,
+$textcolor: $colort1,
+$topbottom: 10px,
+$rightleft: 15px,
+$border: none) {
+  cursor: pointer;
+  text-align: center;
+  padding-top: $topbottom;
+  padding-bottom: $topbottom;
+  padding-left: $rightleft;
+  padding-right: $rightleft;
+  color: $textcolor;
+  background: $bgcolor;
+  border: $border;
+  &:hover {
+    background: $hovercolor;
+  }
+}
+
+////////////////////
+// Image Swaping
+////////////////////
+// Mixin
+@mixin imageSwap {
+    @include mediaQuerie(small) {
+        .#{$imagesmall} {
+            display: block;
+        }
+        .#{$imagemid} {
+            display: none;
+        }
+    }
+    @include mediaQuerie(mid) {
+        .#{$imagesmall} {
+            display: block;
+        }
+        .#{$imagemid} {
+            display: none;
+        }
+    }
+    @include mediaQuerie(large) {
+        .#{$imagesmall} {
+            display: none;
+        }
+        .#{$imagemid} {
+            display: block;
+        }
+    }
+}
+
+////////////////////
+// Simple HR
+////////////////////
+@mixin hrsimple ($hrcolor: black, $hrwidth: 100px, $hrheight: 1px) {
+  &::after {
+      content: '';
+      display: block;
+      width: $hrwidth;
+      height: $hrheight;
+      background: $hrcolor;
+  }
+}
+
+////////////////////
+// Font Awesome
+////////////////////
+// Use pseudo element as font-awesome icon
+@mixin font-awesome($charcode, $vertical-align: middle) {
+&::before {
+  display: inline-block;
+  font-family: "FontAwesome";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  content: $charcode;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: $vertical-align;
+}}

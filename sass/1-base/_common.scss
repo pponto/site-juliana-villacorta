@@ -1,0 +1,23 @@
+/* BASE/COMMON */
+body {
+    background: #6F292D;
+    color: $colors2;
+    @extend %fontType1;
+    transition: background .5s ease;
+    will-change: background;
+}
+h1,h2,h3,h4,h5,h6 {
+    @extend %fontType2;
+}
+a {
+    color: $colors2;
+    @extend %fontType1;
+   // text-decoration: none;
+    &:hover {
+        color: $colors1;
+    }
+}
+img {
+    //display: block;
+    max-width: 100%;
+}

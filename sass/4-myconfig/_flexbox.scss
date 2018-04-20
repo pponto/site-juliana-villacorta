@@ -1,0 +1,82 @@
+////////////////////
+// Flexbox Base
+////////////////////
+.flexcontainer {
+	display: flex;
+	@include container;
+}
+.flexcontainer--vertical {
+	display: flex;
+	flex-direction: column;
+	@include container;
+}
+
+
+////////////////////
+// Flexbox FlexNav
+////////////////////
+.flexnav {
+	padding: 15px $padding1;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	@include mediaQuerie(small) {
+		padding: $padding1;
+		flex-wrap: wrap;
+	}
+}
+.flexnav__list {
+	display: flex;
+	flex-wrap: wrap;
+}
+.flexnav__list--item {
+	display: block;
+	padding: 10px;
+	@include mediaQuerie(small) {
+		padding: 10px 10px 10px 0;
+	}
+}
+.flexnav__list--item--last {
+	display: block;
+	padding: 10px 0 10px 10px;
+	@include mediaQuerie(small) {
+		padding: 10px 10px 10px 0;
+	}
+}
+
+
+////////////////////
+// Flexbox Section
+////////////////////
+.flexsection {
+	flex: 1;
+	padding-left: $padding1;
+	padding-right: $padding1;
+}
+.flexsection__image {
+	//align-self: center;
+	flex: 1;
+	padding-left: $padding1;
+	padding-right: $padding1;
+	
+}
+.flexsection__image img {
+	display: block;
+	max-width: 100%;
+}
+.flexsection--center {
+	max-width: $width / 2;
+	padding-left: $padding1;
+	padding-right: $padding1;
+	margin: 0 auto;
+}
+
+// Flexbox Form
+.flexcontainer__form {
+	display: flex;
+	flex-direction: column;
+	max-width: $width / 2;
+	padding-left: $padding1;
+	padding-right: $padding1;
+	margin: 0 auto;
+}

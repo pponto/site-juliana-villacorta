@@ -1,0 +1,14 @@
+////////////////////
+// Contextual Heading
+////////////////////
+$context-font: (header: 1, article: 0.67, footer: 0.5, aside: 0.33);
+@each $element,
+$value in $context-font {
+  #{$element} {
+    @for $i from 1 through 6 {
+      h#{$i} {
+        @include headingSize((7 - $i) * $value);
+      }
+    }
+  }
+}
